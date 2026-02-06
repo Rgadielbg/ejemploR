@@ -1,0 +1,61 @@
+.ContenedorDiv{
+    padding-top: 20px;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    flex: 1;
+ 
+}
+.TarjetaDiv{
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+   background-color: rgb(226, 13, 13);
+    text-align: center;
+}
+.TarjetaDiv img{
+    width: 90%;
+    margin: 0 auto;
+}
+.TarjetaDiv p{
+    text-align: justify;
+    padding: 10px;
+}
+.TarjetaDiv2{
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 50px;
+   background-color: rgb(40, 200, 85);
+    text-align: center;
+}
+.TarjetaDiv4{
+    background-color: orange;
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 50px;
+    text-align: center;
+}
+.TarjetaDiv5{
+    background-color: rgb(231, 42, 42);
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 50px;
+    height: 270px;
+    text-align: center;
+}
+.TarjetaDiv6{
+    background-color: rgb(232, 22, 22);
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 50px;
+    height: 150px;
+    text-align: center;
+    align-items: center;
+}   
