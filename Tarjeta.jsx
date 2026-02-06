@@ -115,4 +115,5 @@ function TarjetaComponent6(){
         </div>
     );
 }
+
 export default Tarjeta

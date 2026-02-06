@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Tarjeta from "../Tarjeta"
+import Tarjeta from "./Tarjeta"
 import Encabezado from "../Encabezado"
 import Pie from "../Pie"
 import './App.css'

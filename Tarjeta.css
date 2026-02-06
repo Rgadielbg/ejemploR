@@ -3,10 +3,21 @@
     width: 80%;
     margin: 0 auto;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     flex-wrap: wrap;
     flex: 1;
  
+}
+.TarjetaDiv1{
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 0 0;
+  border-radius: 5px;
+ background:linear-gradient(to bottom right, #4db8ff, #333) ;
+  text-align: end;
+  order : 999;
+  flex: 0 0 100%;
+  align-self: stretch;
 }
 .TarjetaDiv{
     width: 300px;
@@ -58,4 +69,121 @@
     height: 150px;
     text-align: center;
     align-items: center;
+}   
+
+.TarjetaDiv6 h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.contactoForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: #4db8ff;
+  box-shadow: 0 0 5px rgba(77, 184, 255, 0.5);
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submitBtn {
+  padding: 10px 20px;
+  background-color: #4db8ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.submitBtn:hover {
+  background-color: #2da3e6;
+}
+.contacto{
+        background-color: rgb(185, 12, 12);
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 50px;
+    height: 500px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.acercade{
+    background-color: rgb(235, 103, 103);
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 50px;
+    height: 500px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.acercade img{
+    width: 40%;
+    align-items: center;
+   
+}   
+.acercade h2, p{
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.GaleriaDiv{
+    display: grid;
+padding: 60px 0;
+    gap: 40px;
+    justify-content: center;
+    grid-template-columns: repeat(3,300px);
+}
+.sucursalesDiv{
+    background-color: rgb(228, 14, 14);
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 50px;
+    height: 500px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}   
+.sucursalesDiv h2{
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: xx-large;
 }   
