@@ -5,9 +5,7 @@ import fanta from './assets/imagenes/fanta.png'
 import sidral from './assets/imagenes/sidral.png'
 import '../Tarjeta.css'
 import coca from './assets/imagenes/coca.png'
-import Logotipo from './assets/imagenes/Logotipo.png' 
-
-
+import Promos from './Promos'
 
 function Tarjeta({ vista }) {
   const vistas = {
@@ -31,7 +29,7 @@ function Inicio() {
       <TarjetaComponent />
       <TarjetaComponent />
       <TarjetaComponent />
-      <TarjetaComponen />  
+      <Promos/>
 
     </>
   );
@@ -50,6 +48,7 @@ function Productos() {
     <>
       <TarjetaComponent3 />
       <TarjetaComponet4 />
+      
       <TarjetaComponet5 />
     </>
   );
@@ -77,15 +76,9 @@ function TarjetaComponent() {
     <div className='TarjetaDiv'>
       <img src={Logo2} alt='Logotipo' />
       <h3>Coca-Cola</h3>
+     
       <p>Hola, A ver si me quiere salir este </p>
 
-    </div>
-  );
-}
-function TarjetaComponen(){
-  return (
-    <div className='TarjetaDiv1'>
-      <img src={Logotipo} alt='Logotipo' />
     </div>
   );
 }

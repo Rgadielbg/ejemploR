@@ -8,17 +8,7 @@
     flex: 1;
  
 }
-.TarjetaDiv1{
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0 0 0;
-  border-radius: 5px;
- background:linear-gradient(to bottom right, #4db8ff, #333) ;
-  text-align: end;
-  order : 999;
-  flex: 0 0 100%;
-  align-self: stretch;
-}
+
 .TarjetaDiv{
     width: 300px;
     padding: 10px;
