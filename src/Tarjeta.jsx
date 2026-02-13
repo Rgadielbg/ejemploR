@@ -29,8 +29,7 @@ function Inicio() {
       <TarjetaComponent />
       <TarjetaComponent />
       <TarjetaComponent />
-      <Promos/>
-
+     
     </>
   );
 }
@@ -59,7 +58,14 @@ function Galeria() {
 }
 
 function Sucursales() {
-  return <TarjetaComponent9 />
+  return( 
+  <>
+  <TarjetaComponent9 />
+  <Promos/>
+  
+   
+  </>
+  )
 }
 
 function Contacto() {
@@ -73,13 +79,15 @@ function Contacto() {
 }
 function TarjetaComponent() {
   return (
+    <>
+   
     <div className='TarjetaDiv'>
       <img src={Logo2} alt='Logotipo' />
       <h3>Coca-Cola</h3>
-     
       <p>Hola, A ver si me quiere salir este </p>
 
     </div>
+    </>
   );
 }
 
@@ -163,11 +171,16 @@ function Galerias() {
 }
 function TarjetaComponent9() {   
     return (
+      <>
+      
         <div className='sucursalesDiv'>
+          <TarjetaComponent/>
+        
             <h2>Sucursales</h2>
             <p>dkjbc-ñcvnbsda-c</p>   
             <p>dvdvcdvdvecv</p>
         </div>
+        </>
     );
 } 
 

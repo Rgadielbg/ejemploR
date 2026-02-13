@@ -5,6 +5,7 @@ import coca from './src/assets/imagenes/coca.png'
 import fanta from './src/assets/imagenes/fanta.png'
 import sidral from './src/assets/imagenes/sidral.png'
 import './Tarjeta.css'
+import { GoogleMap } from '@react-google-maps/api'
 
 function Tarjeta({vista}){
     const vistas={
@@ -27,6 +28,7 @@ function Inicio() {
       <TarjetaComponent />
       <TarjetaComponent />
       <TarjetaComponent />
+     
 
     </>
   );
@@ -70,12 +72,16 @@ function Contacto() {
 }
 function TarjetaComponent(){
     return(
+     
+     <>
+     < Mapa/>
         <div className='TarjetaDiv'>
             <img src={Logo2} alt='Logotipo'/>
             <h3>Coca-Cola</h3>
             <p>Hola, A ver si me quiere salir este </p>
-           
+        
         </div>
+        </>
     )
 }
 
