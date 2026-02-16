@@ -10,7 +10,7 @@ function Promos(){
     <div className='TarjetaDiv1'>
       <img src={Logotipo} alt='Logotipo' />
        <MapaLocalizacion/>
-       <Promos/>
+      
 
     </div>
 
