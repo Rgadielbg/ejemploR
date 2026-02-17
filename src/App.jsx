@@ -7,7 +7,7 @@ import Pie from "../Pie"
 function App(){
   const [vista, setVista] = useState("Inicio");
   return (
-    <div>
+    <div className="app-container">
       <Encabezado cambiarVista={setVista} />
       <Tarjeta vista={vista}/>
       <Pie/>
