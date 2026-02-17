@@ -6,8 +6,6 @@ import fanta from './src/assets/imagenes/fanta.png'
 import sidral from './src/assets/imagenes/sidral.png'
 import './Tarjeta.css'
 import { GoogleMap } from '@react-google-maps/api'
-import 'Cards.jsx'
-import Cards from './cards'
 
 function Tarjeta({vista}){
     const vistas={
