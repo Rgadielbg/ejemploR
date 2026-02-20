@@ -6,6 +6,8 @@ import sidral from './assets/imagenes/sidral.png'
 import '../Tarjeta.css'
 import coca from './assets/imagenes/coca.png'
 import Promos from './Promos'
+import  api  from './services/api';
+import { useEffect, useState } from "react";
 
 function Tarjeta({ vista }) {
   const vistas = {
@@ -43,14 +45,42 @@ function AcercaDe() {
 }
 
 function Productos() {
-  return (
-    <>
-      <TarjetaComponent3 />
-      <TarjetaComponet4 />
-      
-      <TarjetaComponet5 />
-    </>
-  );
+   const [productos, setProductos] = useState([]);
+    const[loading, setLoading] = useState(true);
+
+    useEffect(()=>{
+        const obtenerProductos = async () => {
+            try{
+                const response = await api.get("products");
+                setProductos(response.data);
+            } catch (error){
+                console.error('Error al obtener los productos:', error);
+            } finally{
+                setLoading(false);
+            }
+        };
+        obtenerProductos();
+    }, [])
+    if (loading) {
+        return <p>Cargando productos...</p>
+    } 
+    return (
+        <div>
+            <main className='classmain'>
+                <header>
+                    <h1>Nuestro catalogo</h1>
+                </header>
+                {productos.map((producto)=>(
+                   <article key ={producto.id} className='classArticle'>
+                    <p>{producto.title}</p>
+                    <p>{producto.description}</p>
+                    <img src={producto.image} alt={producto.title} className='classImg'/>
+                    <p>${producto.price}</p>
+                    </article>
+                ))}
+            </main>
+        </div>
+    );
 }
 
 function Galeria() {
