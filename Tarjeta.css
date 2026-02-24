@@ -172,7 +172,28 @@
     width: 100%;
     margin: 0 auto;
 }
-.sucursalesDiv{
+
+/* product section styling */
+.classmain{
+    color: #000;
+}
+
+.classmain h1{
+    color: #000;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.classmain .classArticle p{
+    color: #000;
+    margin: 5px 0;
+}
+
+.classmain .classArticle img{
+    max-width: 100%;
+    display: block;
+    margin: 0 auto 10px;
+}.sucursalesDiv{
     background-color: rgb(228, 14, 14);
     width: 100%;
     max-width: 800px;
@@ -190,3 +211,4 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: xx-large;
 }   
+ 

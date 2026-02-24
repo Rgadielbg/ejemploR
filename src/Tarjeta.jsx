@@ -8,6 +8,8 @@ import coca from './assets/imagenes/coca.png'
 import Promos from './Promos'
 import  api  from './services/api';
 import { useEffect, useState } from "react";
+import RegistrarProducto from './RegistrarProducto.JSX'
+
 
 function Tarjeta({ vista }) {
   const vistas = {
@@ -66,6 +68,7 @@ function Productos() {
     } 
     return (
         <div>
+          <RegistrarProducto/>
             <main className='classmain'>
                 <header>
                     <h1>Nuestro catalogo</h1>
