@@ -9,6 +9,97 @@ import Promos from './Promos'
 import  api  from './services/api';
 import { useEffect, useState } from "react";
 import RegistrarProducto from './RegistrarProducto.JSX'
+import editarIcon from './assets/editarIcon.png'
+import eliminarIcon from './assets/eliminarIcon.png'
+
+
+
+function Usuarios() {
+  const [usuarios, setUsuarios] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const obtenerUsuarios = async () => {
+      try {
+        const response = await api.get("users");
+        setUsuarios(response.data);
+      } catch (error) {
+        console.error('Error al obtener los usuarios:', error);
+        setError(error.message || 'Error al cargar los usuarios');
+      } finally {
+        setLoading(false);
+      }
+    };
+    obtenerUsuarios();
+  }, []);
+
+  if (loading) {
+    return <p>Cargando usuarios...</p>;
+  }
+
+  if (error) {
+    return <p style={{ color: 'red' }}>Error: {error}</p>;
+  }
+
+  const handleEditar = (usuario) => {
+    console.log('Editar usuario:', usuario);
+  };
+
+  const handleEliminar = (id) => {
+    console.log('Eliminar usuario con ID:', id);
+  };
+
+  return (
+    <div>
+      <h1>Gestión de Usuarios</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Dirección</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          {usuarios.map((usuario) => (
+            <tr key={usuario.id}>
+              <td>{usuario.id}</td>
+              <td>{usuario.name.firstname}</td>
+              <td>{usuario.name.lastname}</td>
+              <td>{usuario.email}</td>
+              <td>{usuario.phone}</td>
+              <td>{usuario.address.street}, {usuario.address.city}</td>
+              <td>
+                <button
+                  onClick={() => handleEditar(usuario)}
+                  title="Editar"
+                >
+                  <img src={editarIcon} alt="Editar" style={{ width: '20px', height: '20px' }} />
+                </button>
+              </td>
+              <td>
+                <button
+                  onClick={() => handleEliminar(usuario.id)}
+                  title="Eliminar"
+                >
+                  <img src={eliminarIcon} alt="Eliminar" style={{ width: '20px', height: '20px' }} />
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+
 
 
 function Tarjeta({ vista }) {
@@ -18,14 +109,16 @@ function Tarjeta({ vista }) {
     Productos: <Productos />,
     Galeria: <Galeria />,
     Sucursales: <Sucursales />,
-    Contacto: <Contacto />
-  }
+    Contacto: <Contacto />,
+    Usuarios: <Usuarios />,   
+    Carrito: <Carrito />,     
+  };
+
   return (
     <div className='ContenedorDiv'>
       {vistas[vista] || <Inicio />}
-    
     </div>
-  )
+  );
 }
 function Inicio() {
   return (
@@ -48,39 +141,49 @@ function AcercaDe() {
 
 function Productos() {
    const [productos, setProductos] = useState([]);
-    const[loading, setLoading] = useState(true);
+   const [loading, setLoading] = useState(true);
+   const [error, setError] = useState(null);
 
-    useEffect(()=>{
-        const obtenerProductos = async () => {
-            try{
-                const response = await api.get("products");
-                setProductos(response.data);
-            } catch (error){
-                console.error('Error al obtener los productos:', error);
-            } finally{
-                setLoading(false);
-            }
-        };
-        obtenerProductos();
-    }, [])
-    if (loading) {
-        return <p>Cargando productos...</p>
-    } 
-    return (
+   useEffect(()=>{
+       const obtenerProductos = async () => {
+           try{
+               const response = await api.get("products");
+               setProductos(response.data);
+           } catch (error){
+               console.error('Error al obtener los productos:', error);
+               setError(error.message || 'Error al cargar productos');
+           } finally{
+               setLoading(false);
+           }
+       };
+       obtenerProductos();
+   }, [])
+   
+   if (loading) {
+       return <p>Cargando productos...</p>
+   } 
+   
+   if (error) {
+       return <p style={{ color: 'red' }}>Error: {error}</p>
+   }
+   
+   return (
         <div>
           <RegistrarProducto/>
             <main className='classmain'>
                 <header>
-                    <h1>Nuestro catalogo</h1>
+                    <h1>Nuestro catálogo</h1>
                 </header>
-                {productos.map((producto)=>(
-                   <article key ={producto.id} className='classArticle'>
-                    <p>{producto.title}</p>
-                    <p>{producto.description}</p>
-                    <img src={producto.image} alt={producto.title} className='classImg'/>
-                    <p>${producto.price}</p>
-                    </article>
-                ))}
+                <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px' }}>
+                  {productos.map((producto)=>(
+                     <div key={producto.id} className='TarjetaDiv'>
+                      <img src={producto.image} alt={producto.title} style={{ width: '100%', height: '200px', objectFit: 'contain' }}/>
+                      <h3>{producto.title}</h3>
+                      <p>{producto.description}</p>
+                      <p><strong>${producto.price}</strong></p>
+                     </div>
+                  ))}
+                </div>
             </main>
         </div>
     );
@@ -215,7 +318,14 @@ function TarjetaComponent9() {
         </div>
         </>
     );
-} 
-
-
+}
+function Carrito() {
+  return (
+    
+    <div>
+      <RegistrarProducto/>
+      <h2>Sección Carrito</h2>
+    </div>
+  );
+}
 export default Tarjeta

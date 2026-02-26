@@ -37,6 +37,8 @@ function Menu({cambiarVista}){
                 <li onClick={() => cambiarVista("Galeria")}>Galería</li>
                 <li onClick={() => cambiarVista("Sucursales")}>Sucursales</li>
                 <li onClick={() => cambiarVista("Contacto")}>Contacto</li>
+                <li onClick={()=> cambiarVista("Usuarios")}>Usuarios</li>
+                <li onClick={()=> cambiarVista("Carrito")}>Carrito</li>
             </ul>
         </div>
     )

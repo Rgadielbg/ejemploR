@@ -1,3 +1,6 @@
+import editarIcon from './assets/editarIcon.png'
+import eliminarIcon from './assets/eliminarIcon.png'
+
 function Personas(){
     const [usuarios, setUsuarios] = useState([]);
     const [loading, setLoading] = useState(true);
