@@ -1,0 +1,54 @@
+.registrar-container {
+	max-width: 500px;
+	margin: 2rem auto;
+	padding: 2rem;
+	background-color: #da0303;
+	border-radius: 8px;
+	box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+	color: inherit;
+}
+
+.registrar-container h2 {
+	text-align: center;
+	margin-bottom: 1.5rem;
+	color: #000000;
+}
+
+.registrar-form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.registrar-form input {
+	padding: 0.75rem 1rem;
+	border: 1px solid #ffffff;
+	border-radius: 4px;
+	background-color: #ffffff;
+	color: inherit;
+}
+
+.registrar-form input::placeholder {
+	color: #000000;
+}
+
+.registrar-form button {
+	align-self: center;
+	width: auto;
+	padding: 0.75rem 1.5rem;
+	background-color: #7a0000;
+	color: #fff;
+	border: none;
+	transition: background-color 0.2s;
+}
+
+.registrar-form button:hover {
+	background-color: #ff0000;
+}
+
+.registrar-form input:focus {
+	outline: none;
+	border-color: #e20404;
+	box-shadow: 0 0 0 2px rgba(202, 24, 24, 0.3);
+}
+

@@ -4,15 +4,15 @@ import Logo3 from './assets/imagenes/Logo3.png'
 import fanta from './assets/imagenes/fanta.png'
 import sidral from './assets/imagenes/sidral.png'
 import '../Tarjeta.css'
+import api from './Services/api'
 import coca from './assets/imagenes/coca.png'
 import Promos from './Promos'
-import  api  from './services/api';
+
 import { useEffect, useState } from "react";
 import RegistrarProducto from './RegistrarProducto.JSX'
-import editarIcon from './assets/editarIcon.png'
-import eliminarIcon from './assets/eliminarIcon.png'
 
-
+import RegistrarUsuario from './RegistrarUsuario.jsx'
+import RegistrarCarrito from './RegistrarCarrito.jsx'
 
 function Usuarios() {
   const [usuarios, setUsuarios] = useState([]);
@@ -52,6 +52,7 @@ function Usuarios() {
 
   return (
     <div>
+      <RegistrarUsuario />  
       <h1>Gestión de Usuarios</h1>
       <table>
         <thead>
@@ -80,7 +81,7 @@ function Usuarios() {
                   onClick={() => handleEditar(usuario)}
                   title="Editar"
                 >
-                  <img src={editarIcon} alt="Editar" style={{ width: '20px', height: '20px' }} />
+                 <h6>Editar</h6>
                 </button>
               </td>
               <td>
@@ -88,8 +89,9 @@ function Usuarios() {
                   onClick={() => handleEliminar(usuario.id)}
                   title="Eliminar"
                 >
-                  <img src={eliminarIcon} alt="Eliminar" style={{ width: '20px', height: '20px' }} />
+                  <h6>Eliminar</h6>
                 </button>
+                
               </td>
             </tr>
           ))}
@@ -320,12 +322,72 @@ function TarjetaComponent9() {
     );
 }
 function Carrito() {
-  return (
-    
-    <div>
-      <RegistrarProducto/>
-      <h2>Sección Carrito</h2>
-    </div>
-  );
-}
+
+    const [ordenes, setOrdenes] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+   
+    const handleRemove = (ordenId, productId) => {
+        console.log(`Quitar producto ${productId} del pedido ${ordenId}`);
+        
+    };
+
+    useEffect(() => {
+        const obtenerOrdenes = async () => {
+            try {
+                const response = await api.get("carts");
+                setOrdenes(response.data);
+            } catch (error) {
+                console.error('Error al obtener las órdenes:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        obtenerOrdenes();
+    }, []);
+
+    if (loading) {
+        return <p>Cargando Pedidos...</p>
+    }
+
+    return(
+      
+        <div className="carrito-container">
+         
+
+            <h2>Carrito de Compras</h2>
+
+            
+            <div className="carrito-grid">
+                {ordenes.map((orden) => (
+                    <div key={orden.id} className='orden-card'>
+                        <h3>Pedido #{orden.id}</h3>
+                        <p><strong>Usuario:</strong> {orden.userId}</p>
+                        <p><strong>Fecha:</strong> {new Date(orden.date).toLocaleDateString()}</p>
+                        
+                        <h4>Productos:</h4>
+                        <ul className="productos-list">
+                            {orden.products.map((producto) => (
+                                <li key={producto.productId}>
+                                    <span>Producto ID: {producto.productId} - Cantidad: {producto.quantity}</span>
+                                    <button
+                                        className="btn-eliminar"
+                                        onClick={() => handleRemove(orden.id, producto.productId)}
+                                        title="Eliminar producto"
+                                    >
+
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
+                 <RegistrarCarrito />
+            </div>
+            
+        </div>
+    );
+};
+
+
 export default Tarjeta
