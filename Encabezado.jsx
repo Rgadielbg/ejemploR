@@ -6,6 +6,8 @@ import youtube from './src/assets/imagenes/youtube.png';
 import linkedin from './src/assets/imagenes/linkedin.png';
 import './Encabezado.css'
 import Clima from './src/Clima';
+import { useAuth } from './src/AuthContext';
+
 
 
 
@@ -28,6 +30,7 @@ function Logotipo(){
 }
 
 function Menu({cambiarVista}){
+    const {isLoggedIn}= useAuth;
     return (
         <div className='menuDiv'>
             <ul>
@@ -37,8 +40,20 @@ function Menu({cambiarVista}){
                 <li onClick={() => cambiarVista("Galeria")}>Galería</li>
                 <li onClick={() => cambiarVista("Sucursales")}>Sucursales</li>
                 <li onClick={() => cambiarVista("Contacto")}>Contacto</li>
-                <li onClick={()=> cambiarVista("Usuarios")}>Usuarios</li>
-                <li onClick={()=> cambiarVista("Carrito")}>Carrito</li>
+               
+               
+                
+                {isLoggedIn ? (
+                    <>
+                    <li onClick={()=>cambiarVista("Usuario")}>Usuario</li>
+                     <li onClick={()=> cambiarVista("Carrito")}>Carrito</li>
+                    <li>Cerrar Sesion</li>
+                    </>
+                ):(
+                    <li onClick={()=> cambiarVista("Iniciar")}>IniciarSesion</li>
+                
+
+                )}
             </ul>
         </div>
     )

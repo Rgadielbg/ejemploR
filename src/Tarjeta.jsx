@@ -13,6 +13,7 @@ import RegistrarProducto from './RegistrarProducto.JSX'
 
 import RegistrarUsuario from './RegistrarUsuario.jsx'
 import RegistrarCarrito from './RegistrarCarrito.jsx'
+import IniciarSesion from './IniciarSesion.jsx'
 
 function Usuarios() {
   const [usuarios, setUsuarios] = useState([]);
@@ -52,7 +53,7 @@ function Usuarios() {
 
   return (
     <div>
-      <RegistrarUsuario />  
+      <RegistrarUsuario />
       <h1>Gestión de Usuarios</h1>
       <table>
         <thead>
@@ -81,7 +82,7 @@ function Usuarios() {
                   onClick={() => handleEditar(usuario)}
                   title="Editar"
                 >
-                 <h6>Editar</h6>
+                  <h6>Editar</h6>
                 </button>
               </td>
               <td>
@@ -91,7 +92,7 @@ function Usuarios() {
                 >
                   <h6>Eliminar</h6>
                 </button>
-                
+
               </td>
             </tr>
           ))}
@@ -100,6 +101,9 @@ function Usuarios() {
     </div>
   );
 }
+
+
+<IniciarSesion />
 
 
 
@@ -112,8 +116,9 @@ function Tarjeta({ vista }) {
     Galeria: <Galeria />,
     Sucursales: <Sucursales />,
     Contacto: <Contacto />,
-    Usuarios: <Usuarios />,   
-    Carrito: <Carrito />,     
+    Usuarios: <Usuarios />,
+    Carrito: <Carrito />,
+    Iniciar: <IniciarSesion />
   };
 
   return (
@@ -128,7 +133,7 @@ function Inicio() {
       <TarjetaComponent />
       <TarjetaComponent />
       <TarjetaComponent />
-     
+
     </>
   );
 }
@@ -142,67 +147,67 @@ function AcercaDe() {
 }
 
 function Productos() {
-   const [productos, setProductos] = useState([]);
-   const [loading, setLoading] = useState(true);
-   const [error, setError] = useState(null);
+  const [productos, setProductos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-   useEffect(()=>{
-       const obtenerProductos = async () => {
-           try{
-               const response = await api.get("products");
-               setProductos(response.data);
-           } catch (error){
-               console.error('Error al obtener los productos:', error);
-               setError(error.message || 'Error al cargar productos');
-           } finally{
-               setLoading(false);
-           }
-       };
-       obtenerProductos();
-   }, [])
-   
-   if (loading) {
-       return <p>Cargando productos...</p>
-   } 
-   
-   if (error) {
-       return <p style={{ color: 'red' }}>Error: {error}</p>
-   }
-   
-   return (
-        <div>
-          <RegistrarProducto/>
-            <main className='classmain'>
-                <header>
-                    <h1>Nuestro catálogo</h1>
-                </header>
-                <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px' }}>
-                  {productos.map((producto)=>(
-                     <div key={producto.id} className='TarjetaDiv'>
-                      <img src={producto.image} alt={producto.title} style={{ width: '100%', height: '200px', objectFit: 'contain' }}/>
-                      <h3>{producto.title}</h3>
-                      <p>{producto.description}</p>
-                      <p><strong>${producto.price}</strong></p>
-                     </div>
-                  ))}
-                </div>
-            </main>
+  useEffect(() => {
+    const obtenerProductos = async () => {
+      try {
+        const response = await api.get("products");
+        setProductos(response.data);
+      } catch (error) {
+        console.error('Error al obtener los productos:', error);
+        setError(error.message || 'Error al cargar productos');
+      } finally {
+        setLoading(false);
+      }
+    };
+    obtenerProductos();
+  }, [])
+
+  if (loading) {
+    return <p>Cargando productos...</p>
+  }
+
+  if (error) {
+    return <p style={{ color: 'red' }}>Error: {error}</p>
+  }
+
+  return (
+    <div>
+      <RegistrarProducto />
+      <main className='classmain'>
+        <header>
+          <h1>Nuestro catálogo</h1>
+        </header>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px' }}>
+          {productos.map((producto) => (
+            <div key={producto.id} className='TarjetaDiv'>
+              <img src={producto.image} alt={producto.title} style={{ width: '100%', height: '200px', objectFit: 'contain' }} />
+              <h3>{producto.title}</h3>
+              <p>{producto.description}</p>
+              <p><strong>${producto.price}</strong></p>
+            </div>
+          ))}
         </div>
-    );
+      </main>
+    </div>
+  );
 }
 
 function Galeria() {
-    return<Galerias />
+  return <Galerias />
 }
 
 function Sucursales() {
-  return( 
-  <>
-  <TarjetaComponent9 />
-  <Promos/>
-  
-   
-  </>
+  return (
+    <>
+      <TarjetaComponent9 />
+      <Promos />
+
+
+    </>
   )
 }
 
@@ -218,17 +223,27 @@ function Contacto() {
 function TarjetaComponent() {
   return (
     <>
-   
-    <div className='TarjetaDiv'>
-      <img src={Logo2} alt='Logotipo' />
-      <h3>Coca-Cola</h3>
-      <p>Hola, A ver si me quiere salir este </p>
 
-    </div>
+      <div className='TarjetaDiv'>
+        <img src={Logo2} alt='Logotipo' />
+        <h3>Coca-Cola</h3>
+        <p>Hola, A ver si me quiere salir este </p>
+
+      </div>
     </>
   );
 }
 
+function TarjetaComponentI() {
+  return (
+    <div className='TarjetaDivI'>
+      <img src={fanta} alt='Logotipo' />
+      <h3>Fanta</h3>
+      <p>El mejor sabor de naranja</p>
+    </div>
+
+  )
+}
 function TarjetaComponent3() {
   return (
     <div className='TarjetaDiv2'>
@@ -298,95 +313,94 @@ function TarjetaComponent8() {
   );
 }
 function Galerias() {
-    return (
+  return (
 
-        <div className='GaleriaDiv'>
-            <h2>Galería</h2>
-            <img src={coca} alt='Logotipo' />
-           
-        </div>
-    );
+    <div className='GaleriaDiv'>
+      <h2>Galería</h2>
+      <img src={coca} alt='Logotipo' />
+
+    </div>
+  );
 }
-function TarjetaComponent9() {   
-    return (
-      <>
-      
-        <div className='sucursalesDiv'>
-          <TarjetaComponent/>
-        
-            <h2>Sucursales</h2>
-            <p>dkjbc-ñcvnbsda-c</p>   
-            <p>dvdvcdvdvecv</p>
-        </div>
-        </>
-    );
+function TarjetaComponent9() {
+  return (
+    <>
+
+      <div className='sucursalesDiv'>
+        <TarjetaComponent />
+        <h2>Sucursales</h2>
+        <p>dkjbc-ñcvnbsda-c</p>
+        <p>dvdvcdvdvecv</p>
+      </div>
+    </>
+  );
 }
 function Carrito() {
 
-    const [ordenes, setOrdenes] = useState([]);
-    const [loading, setLoading] = useState(true);
+  const [ordenes, setOrdenes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-   
-    const handleRemove = (ordenId, productId) => {
-        console.log(`Quitar producto ${productId} del pedido ${ordenId}`);
-        
+
+  const handleRemove = (ordenId, productId) => {
+    console.log(`Quitar producto ${productId} del pedido ${ordenId}`);
+
+  };
+
+  useEffect(() => {
+    const obtenerOrdenes = async () => {
+      try {
+        const response = await api.get("carts");
+        setOrdenes(response.data);
+      } catch (error) {
+        console.error('Error al obtener las órdenes:', error);
+      } finally {
+        setLoading(false);
+      }
     };
+    obtenerOrdenes();
+  }, []);
 
-    useEffect(() => {
-        const obtenerOrdenes = async () => {
-            try {
-                const response = await api.get("carts");
-                setOrdenes(response.data);
-            } catch (error) {
-                console.error('Error al obtener las órdenes:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        obtenerOrdenes();
-    }, []);
+  if (loading) {
+    return <p>Cargando Pedidos...</p>
+  }
 
-    if (loading) {
-        return <p>Cargando Pedidos...</p>
-    }
+  return (
 
-    return(
-      
-        <div className="carrito-container">
-         
+    <div className="carrito-container">
 
-            <h2>Carrito de Compras</h2>
 
-            
-            <div className="carrito-grid">
-                {ordenes.map((orden) => (
-                    <div key={orden.id} className='orden-card'>
-                        <h3>Pedido #{orden.id}</h3>
-                        <p><strong>Usuario:</strong> {orden.userId}</p>
-                        <p><strong>Fecha:</strong> {new Date(orden.date).toLocaleDateString()}</p>
-                        
-                        <h4>Productos:</h4>
-                        <ul className="productos-list">
-                            {orden.products.map((producto) => (
-                                <li key={producto.productId}>
-                                    <span>Producto ID: {producto.productId} - Cantidad: {producto.quantity}</span>
-                                    <button
-                                        className="btn-eliminar"
-                                        onClick={() => handleRemove(orden.id, producto.productId)}
-                                        title="Eliminar producto"
-                                    >
+      <h2>Carrito de Compras</h2>
 
-                                    </button>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                ))}
-                 <RegistrarCarrito />
-            </div>
-            
-        </div>
-    );
+
+      <div className="carrito-grid">
+        {ordenes.map((orden) => (
+          <div key={orden.id} className='orden-card'>
+            <h3>Pedido #{orden.id}</h3>
+            <p><strong>Usuario:</strong> {orden.userId}</p>
+            <p><strong>Fecha:</strong> {new Date(orden.date).toLocaleDateString()}</p>
+
+            <h4>Productos:</h4>
+            <ul className="productos-list">
+              {orden.products.map((producto) => (
+                <li key={producto.productId}>
+                  <span>Producto ID: {producto.productId} - Cantidad: {producto.quantity}</span>
+                  <button
+                    className="btn-eliminar"
+                    onClick={() => handleRemove(orden.id, producto.productId)}
+                    title="Eliminar producto"
+                  >
+
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+        <RegistrarCarrito />
+      </div>
+
+    </div>
+  );
 };
 
 
