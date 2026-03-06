@@ -1,15 +1,30 @@
-   import { useState } from "react";
-   import './IniciarSesion.css'
+import { useState } from "react";
+import './IniciarSesion.css'
+import { useAuth } from "./AuthContext";
 
-   function IniciarSesion(){
+function IniciarSesion({chVista})=>{
+  const {IniciarSesion}= use
 
-const [usuario, setUsuario] = useState("");
+  const [usuario, setUsuario] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log("Usuario:", usuario);
-    console.log("Password:", password);
+    const credenciales = { username, password };
+    try {
+      const respuesta = await api.post('/auth/IniciarSesion', credenciales);
+      if (respuesta.data.token) {
+        IniciarSesion(respuesta.data.token);
+
+        alert('Autenticacion autorizada');
+        chVista("Uusrios");
+      } else {
+        alert('Credenciales inavalidas');
+      }
+    } catch (error) {
+      alert('Error', error);
+      console.error("Error", error);
+    }
   };
 
   const handleCancel = () => {
@@ -23,7 +38,7 @@ const [usuario, setUsuario] = useState("");
       <form onSubmit={handleSubmit}>
 
         <div className="icono">
-          
+
         </div>
 
         <h2>LOGIN</h2>
@@ -64,7 +79,7 @@ const [usuario, setUsuario] = useState("");
   );
 
 
-   }
+}
 
 
 export default IniciarSesion
