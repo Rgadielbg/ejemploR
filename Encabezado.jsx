@@ -7,6 +7,7 @@ import linkedin from './src/assets/imagenes/linkedin.png';
 import './Encabezado.css'
 import Clima from './src/Clima';
 import { useAuth } from './src/AuthContext';
+import { Autocomplete } from '@react-google-maps/api';
 
 
 
@@ -15,6 +16,7 @@ function Encabezado({cambiarVista}){
     return (
         <div className='encabezadoDiv'>
             <Logotipo />
+            
             <Menu cambiarVista={cambiarVista}/>
             <Redes />
         </div>

@@ -102,8 +102,13 @@ function Usuarios() {
   );
 }
 
+function Iniciar(){
+  <div>
+    <IniciarSesion/>
+    </div>
+}
 
-<IniciarSesion />
+
 
 
 
