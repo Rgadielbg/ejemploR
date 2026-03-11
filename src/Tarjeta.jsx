@@ -7,9 +7,9 @@ import '../Tarjeta.css'
 import api from './Services/api'
 import coca from './assets/imagenes/coca.png'
 import Promos from './Promos'
-
+import RegistrarProducto from './RegistrarProducto.jsx'
 import { useEffect, useState } from "react";
-import RegistrarProducto from './RegistrarProducto.JSX'
+
 
 import RegistrarUsuario from './RegistrarUsuario.jsx'
 import RegistrarCarrito from './RegistrarCarrito.jsx'
@@ -103,9 +103,11 @@ function Usuarios() {
 }
 
 function Iniciar(){
+ return(
   <div>
     <IniciarSesion/>
     </div>
+ );
 }
 
 
@@ -113,7 +115,7 @@ function Iniciar(){
 
 
 
-function Tarjeta({ vista }) {
+function Tarjeta({ vista, chVista}) {
   const vistas = {
     Inicio: <Inicio />,
     AcercaDe: <AcercaDe />,
@@ -123,7 +125,7 @@ function Tarjeta({ vista }) {
     Contacto: <Contacto />,
     Usuarios: <Usuarios />,
     Carrito: <Carrito />,
-    Iniciar: <IniciarSesion />
+    Iniciar: <IniciarSesion chVista={chVista}/>
   };
 
   return (

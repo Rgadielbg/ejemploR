@@ -11,7 +11,7 @@ function App(){
     <div className="app-container">
       <AuthProvider>
       <Encabezado cambiarVista={setVista} />
-      <Tarjeta vista={vista}/>
+      <Tarjeta vista={vista} chVista={setVista}/>
       </AuthProvider>
       <Pie/>
     </div>

@@ -47,7 +47,7 @@ const IniciarSesion = ({ chVista }) => {
       login(token);
       localStorage.setItem("usuario", JSON.stringify(usuarioEncontrado));
       if (chVista) {
-  chVista("Usuario");
+  chVista("Usuarios");
 }
 
     } else {
